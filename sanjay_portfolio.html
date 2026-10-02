@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="D. Sanjay — Electronics & Communication Engineering graduate focused on EV systems, embedded systems, IoT and quality testing." />
+  <title>D. Sanjay | ECE & EV Systems Portfolio</title>
+
+  <style>
+    :root{
+      --bg:#070a0f;
+      --bg2:#0c1118;
+      --card:#101722;
+      --line:rgba(255,255,255,.10);
+      --text:#f5f7fa;
+      --muted:#9aa6b2;
+      --accent:#f5a524;
+      --accent2:#ffd166;
+      --max:1120px;
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 80% 5%, rgba(245,165,36,.12), transparent 28%),
+        radial-gradient(circle at 15% 30%, rgba(245,165,36,.06), transparent 24%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(92%,var(--max));margin:auto}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      backdrop-filter:blur(16px);
+      background:rgba(7,10,15,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .logo{
+      font-weight:800;letter-spacing:-.04em;font-size:1.15rem;
+    }
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:28px;color:#c5ccd4;font-size:.92rem}
+    .nav-links a:hover{color:var(--accent)}
+    .menu{display:none;background:none;border:0;color:white;font-size:1.5rem}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:grid;place-items:center;
+      padding:120px 0 70px;
+      position:relative;overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      border:1px solid rgba(245,165,36,.28);
+      color:var(--accent2);background:rgba(245,165,36,.07);
+      border-radius:999px;padding:8px 13px;font-size:.82rem;margin-bottom:22px;
+    }
+    .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 14px var(--accent)}
+    h1{
+      font-size:clamp(3rem,7vw,6.3rem);
+      line-height:.94;letter-spacing:-.065em;margin-bottom:25px;
+    }
+    h1 span{color:var(--accent)}
+    .hero p{
+      max-width:680px;color:var(--muted);font-size:1.08rem;
+    }
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
+    .btn{
+      padding:13px 19px;border-radius:12px;font-weight:700;font-size:.93rem;
+      border:1px solid var(--line);transition:.25s;
+    }
+    .btn-primary{background:var(--accent);color:#111;border-color:var(--accent)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(245,165,36,.2)}
+    .btn-secondary:hover{border-color:rgba(245,165,36,.5);color:var(--accent)}
+
+    .hero-card{
+      position:relative;min-height:390px;border:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+      border-radius:30px;display:grid;place-items:center;overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";position:absolute;width:250px;height:250px;border-radius:50%;
+      background:rgba(245,165,36,.16);filter:blur(45px);
+    }
+    .ev-symbol{
+      width:190px;height:190px;border:1px solid rgba(245,165,36,.45);
+      border-radius:50%;display:grid;place-items:center;position:relative;
+      box-shadow:0 0 70px rgba(245,165,36,.12);
+    }
+    .ev-symbol:after{
+      content:"";width:135px;height:135px;border:1px dashed rgba(245,165,36,.4);
+      border-radius:50%;position:absolute;
+    }
+    .bolt{font-size:5.3rem;color:var(--accent);filter:drop-shadow(0 0 18px rgba(245,165,36,.5))}
+    .hero-stats{
+      position:absolute;bottom:18px;left:18px;right:18px;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+    }
+    .stat{
+      background:rgba(7,10,15,.72);border:1px solid var(--line);padding:13px;border-radius:13px;
+    }
+    .stat b{display:block;font-size:1.05rem}.stat small{color:var(--muted)}
+
+    /* SECTIONS */
+    section{padding:100px 0}
+    .section-head{margin-bottom:42px}
+    .kicker{color:var(--accent);font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800}
+    h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.05em;margin-top:8px}
+    .section-intro{color:var(--muted);max-width:700px;margin-top:10px}
+
+    .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px}
+    .about-box,.card{
+      background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+      border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+    }
+    .about-box h3{font-size:1.4rem;margin-bottom:13px}
+    .about-box p{color:var(--muted)}
+    .about-list{display:grid;gap:14px}
+    .about-item{display:flex;gap:13px;align-items:flex-start}
+    .icon{
+      width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+      background:rgba(245,165,36,.1);color:var(--accent);flex:none;
+    }
+    .about-item b{display:block}.about-item span{color:var(--muted);font-size:.92rem}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{
+      border:1px solid var(--line);background:#0c121a;padding:10px 13px;border-radius:10px;
+      color:#d8dde3;font-size:.9rem;
+    }
+    .skill:hover{border-color:rgba(245,165,36,.45);color:var(--accent)}
+
+    .timeline{display:grid;gap:18px}
+    .timeline-card{position:relative;padding-left:28px}
+    .timeline-card:before{
+      content:"";position:absolute;left:0;top:7px;width:9px;height:9px;
+      border-radius:50%;background:var(--accent);box-shadow:0 0 14px rgba(245,165,36,.55)
+    }
+    .timeline-card:after{
+      content:"";position:absolute;left:4px;top:20px;bottom:-25px;width:1px;background:var(--line)
+    }
+    .timeline-card:last-child:after{display:none}
+    .date{color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .timeline-card h3{margin:4px 0 3px}
+    .timeline-card p,.timeline-card li{color:var(--muted);font-size:.94rem}
+    .timeline-card ul{padding-left:18px;margin-top:7px}
+
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project-card{min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+    .project-number{font-size:.75rem;color:var(--accent);font-weight:800;letter-spacing:.1em}
+    .project-card h3{font-size:1.45rem;margin:18px 0 9px}
+    .project-card p{color:var(--muted)}
+    .project-tag{margin-top:22px;color:#d7dde4;font-size:.82rem}
+
+    .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .cert-card h3{font-size:1.05rem}.cert-card p{color:var(--muted);margin-top:8px;font-size:.92rem}
+    .cert-date{color:var(--accent);font-size:.78rem;margin-top:14px;display:block;font-weight:700}
+
+    .contact{
+      border:1px solid var(--line);border-radius:28px;padding:45px;
+      background:linear-gradient(135deg,rgba(245,165,36,.10),rgba(255,255,255,.025));
+      display:grid;grid-template-columns:1fr .9fr;gap:40px;align-items:center;
+    }
+    .contact h2{max-width:600px}
+    .contact p{color:var(--muted);margin-top:12px}
+    .contact-links{display:grid;gap:11px}
+    .contact-link{
+      padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(7,10,15,.4);
+    }
+    .contact-link:hover{border-color:rgba(245,165,36,.5)}
+    .contact-link span{color:var(--muted);font-size:.78rem;display:block}
+    footer{padding:30px 0 45px;color:#68727d;font-size:.82rem;border-top:1px solid var(--line)}
+    footer .container{display:flex;justify-content:space-between;gap:20px}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:800px){
+      .nav-links{display:none}.menu{display:block}
+      .hero-grid,.about-grid,.contact{grid-template-columns:1fr}
+      .hero{padding-top:105px}.hero-card{min-height:330px}
+      .project-grid,.cert-grid{grid-template-columns:1fr}
+      section{padding:75px 0}
+      .contact{padding:30px}
+    }
+    @media(max-width:500px){
+      h1{font-size:3.35rem}
+      .hero-stats{position:static;margin:15px;grid-template-columns:1fr}
+      .hero-card{padding-top:25px}
+      footer .container{flex-direction:column}
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">D<span>.</span> SANJAY</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Electronics • EV Systems • Embedded</div>
+          <h1>Building toward the future of <span>electric mobility.</span></h1>
+          <p>
+            Electronics and Communication Engineering graduate with training in EV technology,
+            embedded systems, IoT and automotive quality concepts. Interested in building
+            reliable, safe and high-performance electric vehicle systems.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Let's Connect</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="ev-symbol"><div class="bolt">ϟ</div></div>
+          <div class="hero-stats">
+            <div class="stat"><b>7.82</b><small>B.E. CGPA</small></div>
+            <div class="stat"><b>120 hrs</b><small>EV Training</small></div>
+            <div class="stat"><b>ECE</b><small>Engineering</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">01 / About</div>
+          <h2>Engineer with an EV mindset.</h2>
+          <p class="section-intro">
+            Focused on the intersection of electronics, embedded technology and electric vehicles,
+            with hands-on exposure to IoT and microcontroller-based systems.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box reveal">
+            <h3>Professional Summary</h3>
+            <p>
+              Highly motivated Electronics and Communication Engineering graduate with specialized
+              training in Electric Vehicle technology. Familiar with EV architecture, lithium-ion
+              battery systems, power electronics and vehicle testing fundamentals.
+            </p>
+          </div>
+
+          <div class="about-list reveal">
+            <div class="about-item">
+              <div class="icon">⚡</div>
+              <div><b>EV Technology</b><span>EV architecture, battery systems, power electronics and testing fundamentals.</span></div>
+            </div>
+            <div class="about-item">
+              <div class="icon">⌁</div>
+              <div><b>Embedded & IoT</b><span>Microcontroller-based systems, embedded hardware and IoT integration.</span></div>
+            </div>
+            <div class="about-item">
+              <div class="icon">◈</div>
+              <div><b>Quality & Testing</b><span>Exposure to quality concepts, manufacturing processes and automotive standards.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">02 / Skills</div>
+          <h2>Tools I work with.</h2>
+        </div>
+        <div class="skills reveal">
+          <span class="skill">C</span>
+          <span class="skill">Python</span>
+          <span class="skill">Embedded Systems</span>
+          <span class="skill">EV Systems</span>
+          <span class="skill">Quality Testing</span>
+          <span class="skill">MATLAB</span>
+          <span class="skill">VS Code</span>
+          <span class="skill">Wokwi</span>
+          <span class="skill">Excel</span>
+          <span class="skill">Problem Solving</span>
+          <span class="skill">Teamwork</span>
+          <span class="skill">Quick Learner</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">03 / Experience</div>
+          <h2>Hands-on experience.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="card timeline-card reveal">
+            <div class="date">Internship</div>
+            <h3>Embedded Systems & IoT Intern — Nirloba IT Pvt. Ltd., Chennai</h3>
+            <p>Practical exposure to embedded and connected systems.</p>
+            <ul>
+              <li>Gained hands-on exposure to embedded systems design and Internet-of-Things (IoT) integration.</li>
+              <li>Worked with microcontroller-based systems and supporting tools during the internship period.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-card reveal">
+            <div class="date">Education • 2026</div>
+            <h3>B.E. Electronics & Communication Engineering</h3>
+            <p>Final year CGPA: 7.82</p>
+          </div>
+
+          <div class="card timeline-card reveal">
+            <div class="date">Education • 2022</div>
+            <h3>Higher Secondary School</h3>
+            <p>88.8%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">04 / Projects</div>
+          <h2>Things I've built.</h2>
+          <p class="section-intro">Academic and practical projects connecting software, data and embedded hardware.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="card project-card reveal">
+            <div>
+              <div class="project-number">PROJECT 01</div>
+              <h3>Air Quality Forecasting using Machine Learning</h3>
+              <p>
+                Developed an ML-based prediction model for forecasting air quality levels,
+                including data preprocessing and model evaluation to improve prediction accuracy.
+              </p>
+            </div>
+            <div class="project-tag">Python · Machine Learning · Data Processing</div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div>
+              <div class="project-number">PROJECT 02</div>
+              <h3>Smart Room Environment Monitoring System</h3>
+              <p>
+                Designed a monitoring system to track and report room environmental conditions
+                using embedded hardware.
+              </p>
+            </div>
+            <div class="project-tag">Embedded Systems · Sensors · Monitoring</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">05 / Certifications</div>
+          <h2>Training & learning.</h2>
+        </div>
+
+        <div class="cert-grid">
+          <div class="card cert-card reveal">
+            <h3>Advanced EV Manufacturing Skilling Programme</h3>
+            <p>
+              120-hour theory + practical programme conducted by GTT Foundation,
+              supported by Accenture.
+            </p>
+            <p>Interview Skills · EV Architecture · BMS · Manufacturing & Quality Processes · Automotive Standards</p>
+            <span class="cert-date">July 2026</span>
+          </div>
+
+          <div class="card cert-card reveal">
+            <h3>Embedded Systems & IoT Internship</h3>
+            <p>
+              Internship experience at Nirloba IT Pvt. Ltd. with practical exposure to
+              embedded systems and IoT integration.
+            </p>
+            <span class="cert-date">Nirloba IT Pvt. Ltd.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div>
+            <div class="kicker">06 / Contact</div>
+            <h2>Let's build something useful.</h2>
+            <p>
+              Open to opportunities and conversations around EV technology, embedded systems,
+              electronics and automotive quality/testing.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:sanjay50047@gmail.com">
+              <span>Email</span> sanjay50047@gmail.com
+            </a>
+            <a class="contact-link" href="tel:+916379097846">
+              <span>Phone</span> +91 63790 97846
+            </a>
+            <a class="contact-link" href="https://linkedin.com/in/sanjay-thesing-456442424" target="_blank" rel="noopener">
+              <span>LinkedIn</span> linkedin.com/in/sanjay-thesing-456442424
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 D. Sanjay</span>
+      <span>Electronics • EV • Embedded Systems</span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function toggleMenu(){
+      const links = document.querySelector('.nav-links');
+      const isOpen = links.style.display === 'flex';
+      links.style.display = isOpen ? '' : 'flex';
+      if(!isOpen){
+        links.style.position='absolute';
+        links.style.top='72px';
+        links.style.left='0';
+        links.style.right='0';
+        links.style.padding='20px';
+        links.style.flexDirection='column';
+        links.style.background='rgba(7,10,15,.96)';
+        links.style.borderBottom='1px solid rgba(255,255,255,.1)';
+      }
+    }
+  </script>
+</body>
+</html>
